@@ -39,7 +39,10 @@ if (require.main === module) {
     const { value1, value2 } = parseArguments(process.argv);
     console.log(calculateBmi(value1, value2));
   } catch (e) {
-    console.log("Error, something bad happened, message: ", e.message);
+    console.log(
+      "Error, something bad happened, message: ",
+      (e as Error).message
+    );
   }
 }
 // npm run calculateBmi 180 91

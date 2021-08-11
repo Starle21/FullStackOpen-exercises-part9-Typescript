@@ -29,6 +29,15 @@ app.get("/bmi", (_req, res) => {
   });
 });
 
+// try {
+//   const { height, weight } = req.query;
+//   const bmi = calculateBMI(height, weight);
+//   res.status(200).send(bmi);
+// } catch (error) {
+//   res.status(400).send({ error: error.message });
+// }
+// });
+
 const PORT = 3000;
 
 app.listen(PORT, () => {

@@ -61,6 +61,8 @@ const calculateExercises = (
     case 3:
       ratingDescription = "below par... gotta work harder next time!";
       break;
+    default:
+      throw new Error("You did not provide relevant data");
   }
 
   return {
@@ -78,7 +80,7 @@ try {
   const { array, value } = parseCalculatorArguments(process.argv);
   console.log(calculateExercises(array, value));
 } catch (e) {
-  console.log("Error, something bad happened, message: ", e.message);
+  console.log("Error, something bad happened, message: ", (e as Error).message);
 }
 
 // console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2));
