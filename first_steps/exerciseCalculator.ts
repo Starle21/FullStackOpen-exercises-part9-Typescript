@@ -30,7 +30,7 @@ interface Result {
   ratingDescription: string;
 }
 
-const calculateExercises = (
+export const calculateExercises = (
   dailyExerciseHours: Array<number>,
   target: number
 ): Result => {
@@ -76,11 +76,16 @@ const calculateExercises = (
   };
 };
 
-try {
-  const { array, value } = parseCalculatorArguments(process.argv);
-  console.log(calculateExercises(array, value));
-} catch (e) {
-  console.log("Error, something bad happened, message: ", (e as Error).message);
+if (require.main === module) {
+  try {
+    const { array, value } = parseCalculatorArguments(process.argv);
+    console.log(calculateExercises(array, value));
+  } catch (e) {
+    console.log(
+      "Error, something bad happened, message: ",
+      (e as Error).message
+    );
+  }
 }
 
 // console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2));
