@@ -17,9 +17,9 @@ const parseArguments = (args: Array<string>): BmiValues => {
   }
 };
 
-const calculateBmi = (height: number, weight: number): string => {
+export const calculateBmi = (height: number, weight: number): string => {
   const bmi = weight / (height / 100) ** 2;
-  console.log(bmi);
+  // console.log(bmi);
 
   switch (true) {
     case bmi < 18.5:
@@ -34,12 +34,13 @@ const calculateBmi = (height: number, weight: number): string => {
 };
 
 // console.log(calculateBmi(170, 50));
-try {
-  const { value1, value2 } = parseArguments(process.argv);
-  console.log(calculateBmi(value1, value2));
-} catch (e) {
-  console.log("Error, something bad happened, message: ", e.message);
+if (require.main === module) {
+  try {
+    const { value1, value2 } = parseArguments(process.argv);
+    console.log(calculateBmi(value1, value2));
+  } catch (e) {
+    console.log("Error, something bad happened, message: ", e.message);
+  }
 }
-
 // npm run calculateBmi 180 91
 // xx 0 1 2 3
