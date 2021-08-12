@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/patients
+Content-Type: application/json
+
+{
+    "name": "Heather Cured",
+    "dateOfBirth": "1987-04-10",
+    "ssn": "011116-111Y",
+    "gender": "male",
+    "occupation": "Designer"
+}
