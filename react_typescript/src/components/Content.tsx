@@ -12,6 +12,9 @@ interface ContentProps {
 const Content = ({ courseParts }: ContentProps) => {
   return (
     <div>
+      <p>
+        <i> Version one:</i>
+      </p>
       {courseParts.map((part) => {
         return (
           <p key={part.name}>
