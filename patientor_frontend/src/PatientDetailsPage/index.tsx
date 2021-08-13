@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useStateValue } from "../state";
+import { useStateValue, setPatientDetails } from "../state";
 import { useParams } from "react-router-dom";
 import { Patient } from "../types";
 import { apiBaseUrl } from "../constants";
@@ -22,7 +22,8 @@ const PatientDetailsPage = () => {
           const { data: patient } = await axios.get<Patient>(
             `${apiBaseUrl}/patients/${id}`
           );
-          dispatch({ type: "SET_PATIENT_DETAILS", payload: patient });
+          // dispatch({ type: "SET_PATIENT_DETAILS", payload: patient });
+          dispatch(setPatientDetails(patient));
         } catch (e) {
           console.error(e.response?.data || "Unknown Error");
         }
