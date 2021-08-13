@@ -5,17 +5,19 @@ import Part from "./Part";
 const Parts = ({ courseParts }: { courseParts: CoursePart[] }) => {
   return (
     <div>
-      <p>
+      <h2>
         <i> Version three:</i>
-      </p>
+      </h2>
       {courseParts.map((part) => {
         return (
-          <p key={part.name}>
-            <b>
-              {part.name} {part.exerciseCount}
-            </b>
+          <div key={part.name}>
+            <div>
+              <b>
+                {part.name} {part.exerciseCount}
+              </b>
+            </div>
             <Part part={part} />
-          </p>
+          </div>
         );
       })}
     </div>

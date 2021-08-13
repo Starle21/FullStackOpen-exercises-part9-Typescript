@@ -10,9 +10,9 @@ const assertNever = (value: never): never => {
 const Section = ({ courseParts }: { courseParts: SectionPart[] }) => {
   return (
     <div>
-      <p>
+      <h2>
         <i> Version two:</i>
-      </p>
+      </h2>
       {courseParts.map((part) => {
         switch (part.name) {
           case "Fundamentals":

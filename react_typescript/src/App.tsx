@@ -68,16 +68,35 @@ const App = () => {
       exerciseSubmissionLink: "https://fake-exercise-submit.made-up-url.dev",
       type: "submission",
     },
+    {
+      name: "Backend development",
+      exerciseCount: 21,
+      description: "Typing the backend",
+      requirements: ["nodejs", "jest"],
+      type: "special",
+    },
   ];
 
   return (
     <div>
       <Header courseName={courseName} />
       <Content courseParts={courseParts} />
-      <Section courseParts={courseParts2} />
-      <Parts courseParts={courseParts3} />
       <Total
         totalNumberOfExercises={courseParts.reduce(
+          (carry, part) => carry + part.exerciseCount,
+          0
+        )}
+      />
+      <Section courseParts={courseParts2} />
+      <Total
+        totalNumberOfExercises={courseParts2.reduce(
+          (carry, part) => carry + part.exerciseCount,
+          0
+        )}
+      />
+      <Parts courseParts={courseParts3} />
+      <Total
+        totalNumberOfExercises={courseParts3.reduce(
           (carry, part) => carry + part.exerciseCount,
           0
         )}

@@ -8,45 +8,42 @@ const assertNever = (value: never): never => {
 };
 
 const Part = ({ part }: { part: CoursePart }) => {
-  console.log(part);
-  return <div>sth</div>;
-  // switch (part.type) {
-  //   case "normal":
-  //     return <>{part.description}</>;
-  // }
-
-  // switch (part.name) {
-  //   case "Fundamentals":
-  //     console.log(part);
-  //     return (
-  //       <p key={part.name}>
-  //         {part.name} {part.exerciseCount}
-  //         <br />
-  //         <i> </i>
-  //       </p>
-  //     );
-  //   case "Using props to pass data":
-  //     console.log(part);
-  //     return (
-  //       <p key={part.name}>
-  //         {part.name} {part.exerciseCount} <br />
-  //         {part.groupProjectCount}
-  //       </p>
-  //     );
-  //   case "Deeper type usage":
-  //     console.log(part);
-  //     return (
-  //       <p key={part.name}>
-  //         {part.name} {part.exerciseCount}
-  //         <br />
-  //         <i>{part.description}</i>
-  //         <br />
-  //         {part.exerciseSubmissionLink}
-  //       </p>
-  //     );
-  //   default:
-  //     return assertNever(part);
-  // }
+  switch (part.type) {
+    case "normal":
+      return (
+        <>
+          <i>{part.description}</i>
+          <p></p>
+        </>
+      );
+    case "groupProject":
+      return (
+        <>
+          number of group projects: {part.groupProjectCount}
+          <p></p>
+        </>
+      );
+    case "submission":
+      return (
+        <>
+          <i>{part.description}</i>
+          <br />
+          submit to {part.exerciseSubmissionLink}
+          <p></p>
+        </>
+      );
+    case "special":
+      return (
+        <>
+          <i>{part.description}</i>
+          <br />
+          required skills: {part.requirements.join(", ")}
+          <p></p>
+        </>
+      );
+    default:
+      return assertNever(part);
+  }
 };
 
 export default Part;

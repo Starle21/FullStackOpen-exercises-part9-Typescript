@@ -12,9 +12,9 @@ interface ContentProps {
 const Content = ({ courseParts }: ContentProps) => {
   return (
     <div>
-      <p>
+      <h2>
         <i> Version one:</i>
-      </p>
+      </h2>
       {courseParts.map((part) => {
         return (
           <p key={part.name}>

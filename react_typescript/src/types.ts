@@ -1,7 +1,8 @@
 export type CoursePart =
   | CourseNormalPart
   | CourseProjectPart
-  | CourseSubmissionPart;
+  | CourseSubmissionPart
+  | CourseSpecialPart;
 
 interface CoursePartBase {
   name: string;
@@ -25,6 +26,11 @@ interface CourseSubmissionPart extends CourseBaseDescription {
 interface CourseProjectPart extends CoursePartBase {
   type: "groupProject";
   groupProjectCount: number;
+}
+
+interface CourseSpecialPart extends CourseBaseDescription {
+  type: "special";
+  requirements: string[];
 }
 
 // Section component
