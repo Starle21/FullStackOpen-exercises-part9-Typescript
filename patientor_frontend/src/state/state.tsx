@@ -5,15 +5,26 @@ import { Action } from "./reducer";
 
 export type State = {
   patients: { [id: string]: Patient };
+  // patients: { [id: string]: Patient | undefined };
 };
 
+// example - State defined as Map
+// interface State {
+//   patients: Map<string, Patient>;
+// }
+// ...
+// const myPatient = state.patients.get('non-existing-id'); // type for myPatient is now Patient | undefined
+// console.log(myPatient.name); // error, Object is possibly 'undefined'
+
+// console.log(myPatient?.name); // valid code, but will log 'undefined'
+
 const initialState: State = {
-  patients: {}
+  patients: {},
 };
 
 export const StateContext = createContext<[State, React.Dispatch<Action>]>([
   initialState,
-  () => initialState
+  () => initialState,
 ]);
 
 type StateProviderProps = {
@@ -23,7 +34,7 @@ type StateProviderProps = {
 
 export const StateProvider: React.FC<StateProviderProps> = ({
   reducer,
-  children
+  children,
 }: StateProviderProps) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
