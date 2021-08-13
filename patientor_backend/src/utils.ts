@@ -35,6 +35,7 @@ const parseOccupation = (occupation: unknown): string => {
   return occupation;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isGender = (param: any): param is Gender => {
   return Object.values(Gender).includes(param);
 };
