@@ -9,6 +9,7 @@ import { Header, Icon } from "semantic-ui-react";
 
 const PatientDetailsPage = () => {
   const [{ patients }, dispatch] = useStateValue();
+  const [{ diagnoses }] = useStateValue();
   const { id } = useParams<{ id: string }>();
 
   const patientDetailsInState = (id: string): string | undefined => {
@@ -53,7 +54,11 @@ const PatientDetailsPage = () => {
               <i> {entry.description}</i>
               <ul>
                 {entry.diagnosisCodes?.map((code) => {
-                  return <li key={code}>{code}</li>;
+                  return (
+                    <li key={code}>
+                      {code} {diagnoses[code]?.name}
+                    </li>
+                  );
                 })}
               </ul>
             </div>

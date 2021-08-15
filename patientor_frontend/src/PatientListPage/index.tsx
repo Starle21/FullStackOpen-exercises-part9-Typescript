@@ -8,7 +8,6 @@ import { Patient } from "../types";
 import { apiBaseUrl } from "../constants";
 import HealthRatingBar from "../components/HealthRatingBar";
 import { useStateValue, addPatient } from "../state";
-
 import { Link } from "react-router-dom";
 
 const PatientListPage = () => {
