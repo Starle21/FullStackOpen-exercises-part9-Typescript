@@ -25,6 +25,14 @@ export type Entry =
   | OccupationalHealthcareEntry
   | HealthCheckEntry;
 
+interface BaseEntry {
+  id: string;
+  description: string;
+  date: string;
+  specialist: string;
+  diagnosisCodes?: Array<Diagnose["code"]>;
+}
+
 export interface HealthCheckEntry extends BaseEntry {
   type: "HealthCheck";
   healthCheckRating: HealthCheckRating;
@@ -47,14 +55,6 @@ export interface HospitalEntry extends BaseEntry {
   };
 }
 
-interface BaseEntry {
-  id: string;
-  description: string;
-  date: string;
-  specialist: string;
-  diagnosisCodes?: Array<Diagnose["code"]>;
-}
-
 export enum HealthCheckRating {
   "Healthy" = 0,
   "LowRisk" = 1,
@@ -73,3 +73,8 @@ export enum EntryType {
   HealthCheck = "HealthCheck",
   OccupationalHealthcare = "OccupationalHealthcare",
 }
+
+type UnionOmit<T, K extends string | number | symbol> = T extends unknown
+  ? Omit<T, K>
+  : never;
+export type NewEntry = UnionOmit<Entry, "id">;
