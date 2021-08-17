@@ -1,7 +1,7 @@
 import express from "express";
 
 import patientService from "../services/patientService";
-import toNewPatientEntry from "../utils";
+import { toNewPatientEntry, toPatientMedicalRecord } from "../utils";
 
 const router = express.Router();
 
@@ -31,6 +31,25 @@ router.post("/", (req, res) => {
 
     // send response
     res.json(addedPatient);
+  } catch (e) {
+    res.status(400).send(e.message);
+  }
+});
+
+router.post("/:id/entries", (req, res) => {
+  try {
+    // validate input data
+    const patient = patientService.findById(req.params.id);
+    if (!patient) {
+      throw new Error("Patient not found");
+    }
+    const patientMedicalRecord = toPatientMedicalRecord(req.body);
+
+    // save the validated data
+    const addedRecord = patientService.addRecord(patientMedicalRecord, patient);
+
+    // send response
+    res.json(addedRecord);
   } catch (e) {
     res.status(400).send(e.message);
   }

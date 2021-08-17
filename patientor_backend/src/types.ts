@@ -10,6 +10,7 @@ interface BaseEntry {
   date: string;
   specialist: string;
   diagnosisCodes?: Array<Diagnose["code"]>;
+  type: EntryType;
 }
 
 export enum HealthCheckRating {
@@ -26,29 +27,25 @@ export enum EntryType {
 }
 
 interface HealthCheckEntry extends BaseEntry {
-  type: "HealthCheck";
+  type: EntryType.HealthCheck;
   healthCheckRating: HealthCheckRating;
 }
 
-interface sickLeaveDate {
-  startDate: string;
-  endDate: string;
-}
-
 interface OccupationalHealthcareEntry extends BaseEntry {
-  type: "OccupationalHealthcare";
+  type: EntryType.OccupationalHealthcare;
   employerName: string;
-  sickLeave?: sickLeaveDate;
-}
-
-interface DischargeEntry {
-  date: string;
-  criteria: string;
+  sickLeave?: {
+    startDate: string;
+    endDate: string;
+  };
 }
 
 interface HospitalEntry extends BaseEntry {
-  type: "Hospital";
-  discharge: DischargeEntry;
+  type: EntryType.Hospital;
+  discharge: {
+    date: string;
+    criteria: string;
+  };
 }
 
 export type Entry =
@@ -83,4 +80,4 @@ type UnionOmit<T, K extends string | number | symbol> = T extends unknown
   ? Omit<T, K>
   : never;
 // Define Entry without the 'id' property
-export type EntryWithoutId = UnionOmit<Entry, "id">;
+export type NewEntryWithoutId = UnionOmit<Entry, "id">;
