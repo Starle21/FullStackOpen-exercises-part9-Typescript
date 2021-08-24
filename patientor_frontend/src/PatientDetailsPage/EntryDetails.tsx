@@ -42,8 +42,10 @@ const healthCheckSign = (check: number) => {
     case 0:
       return <Icon name="heart" color="green" />;
     case 1:
-      return <Icon name="heart" color="orange" />;
+      return <Icon name="heart" color="yellow" />;
     case 2:
+      return <Icon name="heart" color="orange" />;
+    case 3:
       return <Icon name="heart" color="red" />;
   }
 };

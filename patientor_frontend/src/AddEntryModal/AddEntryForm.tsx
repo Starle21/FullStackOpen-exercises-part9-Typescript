@@ -24,7 +24,7 @@ export const AddEntryForm = ({ onSubmit, onCancel }: Props) => {
         date: "",
         specialist: "",
         type: "HealthCheck",
-
+        diagnosisCodes: [],
         healthCheckRating: 0,
       }}
       onSubmit={onSubmit}

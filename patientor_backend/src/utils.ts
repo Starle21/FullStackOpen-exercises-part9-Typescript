@@ -107,8 +107,10 @@ const parseDescription = (description: unknown): string => {
 
 const parseDate = (date: unknown): string => {
   if (!date || !isString(date) || !isDate(date)) {
-    throw new Error("Incorrect or missing date");
+    throw new Error("Incorrect or missing date: " + date);
   }
+  console.log(date);
+
   return date;
 };
 const parseSpecialist = (specialist: unknown): string => {

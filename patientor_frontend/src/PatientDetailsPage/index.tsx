@@ -41,7 +41,7 @@ const PatientDetailsPage = () => {
       closeModal();
     } catch (e) {
       console.error(e.response?.data || "Unknown Error");
-      setError(e.response?.data?.error || "Unknown error");
+      setError(e.response?.data || "Unknown error");
     }
   };
 
@@ -64,7 +64,7 @@ const PatientDetailsPage = () => {
 
   if (!patientDetailsInState(id)) return <div>Patient not found...</div>;
 
-  console.log("details patient", patients[id]);
+  // console.log("details patient", patients[id]);
   // console.log("details patient", patients[id].entries);
   // console.log("details patient", patients[id].entries.length);
   // patients[id].entries.map((entry) => {

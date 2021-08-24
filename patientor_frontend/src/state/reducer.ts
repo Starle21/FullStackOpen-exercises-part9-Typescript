@@ -55,7 +55,7 @@ export type Action =
     };
 
 export const reducer = (state: State, action: Action): State => {
-  console.log(action);
+  // console.log(action);
 
   switch (action.type) {
     case "SET_PATIENT_LIST":
