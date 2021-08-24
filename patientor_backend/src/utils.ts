@@ -119,7 +119,7 @@ const parseSpecialist = (specialist: unknown): string => {
 };
 
 const parseDiagnosisCodes = (codes: unknown): Array<Diagnose["code"]> => {
-  if (!codes || !Array.isArray(codes) || codes.map((code) => !isString(code))) {
+  if (!Array.isArray(codes) || !codes.map((code) => isString(code))) {
     throw new Error("Incorrect or missing entry of Diagnoses");
   }
   return codes as Array<Diagnose["code"]>;

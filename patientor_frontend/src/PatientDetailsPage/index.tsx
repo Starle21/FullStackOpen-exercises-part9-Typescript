@@ -32,8 +32,7 @@ const PatientDetailsPage = () => {
   // add back async
   const submitNewEntry = async (values: EntryFormValues) => {
     try {
-      console.log(values);
-
+      // console.log(values);
       const { data: newEntry } = await axios.post<Entry>(
         `${apiBaseUrl}/patients/${id}/entries`,
         values
@@ -66,12 +65,12 @@ const PatientDetailsPage = () => {
   if (!patientDetailsInState(id)) return <div>Patient not found...</div>;
 
   console.log("details patient", patients[id]);
-  console.log("details patient", patients[id].entries);
-  console.log("details patient", patients[id].entries.length);
-  patients[id].entries.map((entry) => {
-    console.log("works?");
-    console.log(entry);
-  });
+  // console.log("details patient", patients[id].entries);
+  // console.log("details patient", patients[id].entries.length);
+  // patients[id].entries.map((entry) => {
+  //   console.log("works?");
+  //   console.log(entry);
+  // });
 
   return (
     <div>
