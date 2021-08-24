@@ -9,7 +9,7 @@ import AddEntryModal from "../AddEntryModal";
 import { Header, Icon, Button } from "semantic-ui-react";
 import EntryDetails from "./EntryDetails";
 
-import { EntryFormValues } from "../AddEntryModal/AddEntryForm";
+import { EntryFormValues } from "../AddEntryModal/AddEntryForm_HealthCheck";
 
 const PatientDetailsPage = () => {
   const [{ patients }, dispatch] = useStateValue();

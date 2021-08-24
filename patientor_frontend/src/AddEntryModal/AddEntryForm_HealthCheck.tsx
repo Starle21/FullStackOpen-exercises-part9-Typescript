@@ -3,7 +3,7 @@ import { Grid, Button, Header } from "semantic-ui-react";
 import { Field, Formik, Form } from "formik";
 
 import { TextField, NumberField, DiagnosisSelection } from "./FormField";
-import { NewEntry } from "../types";
+import { NewEntry, NewHealthCheckEntry } from "../types";
 import { useStateValue } from "../state";
 
 // can just do NewEntry
@@ -15,7 +15,6 @@ interface Props {
 }
 
 export const AddEntryForm = ({ onSubmit, onCancel }: Props) => {
-  // to be continued - do diagnoses
   const [{ diagnoses }] = useStateValue();
   return (
     <Formik
@@ -28,7 +27,9 @@ export const AddEntryForm = ({ onSubmit, onCancel }: Props) => {
         healthCheckRating: 0,
       }}
       onSubmit={onSubmit}
-      validate={(values) => {
+      validate={(values: NewHealthCheckEntry) => {
+        console.log(values);
+
         const requiredError = "Field is required";
         const errors: { [field: string]: string } = {};
         if (!values.date) {
@@ -40,13 +41,19 @@ export const AddEntryForm = ({ onSubmit, onCancel }: Props) => {
         if (!values.specialist) {
           errors.specialist = requiredError;
         }
+        if (!values.healthCheckRating && values.healthCheckRating !== 0) {
+          errors.healthCheckRating = requiredError;
+        }
+        if (values.healthCheckRating > 3 || values.healthCheckRating < 0) {
+          errors.healthCheckRating = "Number between 0 and 3 required";
+        }
         return errors;
       }}
     >
       {({ isValid, dirty, setFieldValue, setFieldTouched }) => {
         return (
           <Form className="form ui">
-            <Header as="h4">HealthCheck Type</Header>
+            {/* <Header as="h4">HealthCheck Type</Header> */}
             <Field
               label="Date of entry"
               placeholder="YYYY-MM-DD"
